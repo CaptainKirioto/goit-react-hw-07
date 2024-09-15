@@ -2,16 +2,10 @@ import s from "./Contact.module.css";
 import { SiAlienware } from "react-icons/si";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { deleteContact } from "../../redux/contactsSlice";
-
-// handleDelete,
+import { deleteContact } from "../../redux/contactsOps";
 
 const Contact = ({ name, number, id }) => {
   const dispatch = useDispatch();
-
-  const handleDelete = () => {
-    dispatch(deleteContact(id));
-  };
 
   return (
     <div className={s.contactWrap}>
@@ -25,7 +19,7 @@ const Contact = ({ name, number, id }) => {
           {number}
         </span>
       </div>
-      <button onClick={handleDelete}>Delete</button>
+      <button onClick={() => dispatch(deleteContact(id))}>Delete</button>
     </div>
   );
 };
